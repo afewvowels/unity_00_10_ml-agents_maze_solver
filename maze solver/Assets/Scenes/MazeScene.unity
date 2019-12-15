@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43748927, g: 0.48531228, b: 0.56558704, a: 1}
+  m_IndirectSpecularColor: {r: 0.17338704, g: 0.216739, b: 0.2988083, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1237,7 +1237,7 @@ PrefabInstance:
     - target: {fileID: 8629524503715799347, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8629524504894183311, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
@@ -1378,24 +1378,24 @@ MonoBehaviour:
     width: 80
     height: 80
     qualityLevel: 1
-    timeScale: 30
+    timeScale: 10
     targetFrameRate: 60
   m_InferenceConfiguration:
     width: 1280
     height: 720
     qualityLevel: 5
-    timeScale: 30
+    timeScale: 10
     targetFrameRate: 60
   resetParameters:
     m_ResetParameters:
     - key: min_width
-      value: 9
+      value: 5
     - key: max_width
-      value: 25
+      value: 5
     - key: interior
-      value: 1
+      value: 0
     - key: obstacles
-      value: 1
+      value: 0
 --- !u!4 &610607165
 Transform:
   m_ObjectHideFlags: 0
@@ -1510,7 +1510,7 @@ PrefabInstance:
     - target: {fileID: 8629524503715799347, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8629524504894183311, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
@@ -1587,13 +1587,13 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 2.3509887e-38, z: -2.3059837e+18, w: 5.820766e-11}
+  m_BoundingSphereOverride: {x: 0, y: -8.1054705e+22, z: 4.5904e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1944,7 +1944,7 @@ PrefabInstance:
     - target: {fileID: 8629524503715799347, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8629524504894183311, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
@@ -2053,7 +2053,7 @@ PrefabInstance:
     - target: {fileID: 8629524503715799347, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8629524504894183311, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
@@ -2239,7 +2239,7 @@ PrefabInstance:
     - target: {fileID: 8629524503715799347, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8629524504894183311, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
@@ -3016,7 +3016,7 @@ PrefabInstance:
     - target: {fileID: 8629524503715799347, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8629524504894183311, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
@@ -3415,7 +3415,7 @@ PrefabInstance:
     - target: {fileID: 8629524503715799347, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8629524504894183311, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
@@ -3896,7 +3896,7 @@ PrefabInstance:
     - target: {fileID: 8629524503715799347, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8629524504894183311, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
@@ -4180,7 +4180,7 @@ PrefabInstance:
     - target: {fileID: 8629524503715799347, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8629524504894183311, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
@@ -4289,7 +4289,7 @@ PrefabInstance:
     - target: {fileID: 8629524503715799347, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8629524504894183311, guid: 240af0724564749bfbaf8ef2dd1ceaf9,
         type: 3}

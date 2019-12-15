@@ -138,10 +138,10 @@ MonoBehaviour:
   - mazegoal
   - mazeobstacle
   raysPerDirection: 4
-  maxRayDegrees: 120
-  sphereCastRadius: 0.5
-  rayLength: 20
-  observationStacks: 1
+  maxRayDegrees: 180
+  sphereCastRadius: 0
+  rayLength: 25
+  observationStacks: 15
   rayHitColor: {r: 0, g: 0.6226415, b: 0.013466727, a: 1}
   rayMissColor: {r: 0.8679245, g: 0, b: 0, a: 1}
   useWorldPositions: 1

@@ -109,10 +109,11 @@ public class MazeAgent : Agent
         agentRB.angularVelocity = Vector3.zero;
         mazeGenerator.DestroyMaze();
         actions = 0;
+        actionsText.text = actions.ToString();
         treasuresCollected = 0;
+        treasuresText.text = treasuresCollected.ToString();
         MakeMaze();
     }
-
     public void UpdateRewardsText()
     {
         rewardsText.text = rewards.ToString("0.000");
@@ -151,10 +152,36 @@ public class MazeAgent : Agent
         mazeGenerator.CreateMaze(width, width, makeInterior, obstacles);
     }
 
+    public void ScoredGoal()
+    {
+        goals++;
+        goalsText.text = goals.ToString();   
+    }
+
+    public void PickedUpTreasure()
+    {
+        treasuresCollected++;
+        treasuresText.text = treasuresCollected.ToString();
+    }
+
     private void OnTriggerEnter(Collider c)
     {
         if (c.gameObject.CompareTag("mazegoal"))
         {
+            if (actions < (10000.0f / 10.0f))
+            {
+                AddReward(1.0f);
+            }
+            else if (actions < (10000.0f / 5.0f))
+            {
+                AddReward(0.5f);
+            }
+            else if (actions < (10000.0f / 2.0f))
+            {
+                AddReward(0.25f);
+            }
+
+            ScoredGoal();
             AddReward(1.0f);
             Done();
         }

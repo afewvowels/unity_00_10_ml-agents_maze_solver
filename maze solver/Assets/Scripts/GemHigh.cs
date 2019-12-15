@@ -7,9 +7,11 @@ public class GemHigh : Gem
     {
         if (collision.gameObject.CompareTag("mazeagent"))
         {
-            collision.gameObject.GetComponent<MazeAgent>().AddReward(reward);
-            collision.gameObject.GetComponent<MazeAgent>().rewards += reward;
-            collision.gameObject.GetComponent<MazeAgent>().UpdateRewardsText();
+            MazeAgent agent = collision.gameObject.GetComponent<MazeAgent>();
+            agent.AddReward(reward);
+            agent.rewards += reward;
+            agent.UpdateRewardsText();
+            agent.PickedUpTreasure();
             StopAllCoroutines();
             Destroy(this.gameObject);
         }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 458365906775479768}
   - component: {fileID: 4678075137737774505}
   - component: {fileID: 342579524127518038}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: CubeView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 6102144326951096485}
   - component: {fileID: 4543598948422833543}
   - component: {fileID: 561088935395527629}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Canvas
   m_TagString: mazecanvas
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 8508897560154159443}
   - component: {fileID: 9033266678765367963}
   - component: {fileID: 5082761141423228535}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 32053635967983008}
   - component: {fileID: 7568146641828765989}
   - component: {fileID: 7871879768714462315}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: TreasuresText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 930994060842271964}
   - component: {fileID: 1255950383696428423}
   - component: {fileID: 7743937377482650066}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: ActionsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 6328104285526403788}
   - component: {fileID: 5509966349217554213}
   - component: {fileID: 4716656545009108747}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: RewardsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   - component: {fileID: 4401704827290615121}
   - component: {fileID: 8256667287567119963}
   - component: {fileID: 1330925138743570359}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: GoalsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -594,7 +594,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8629524503334570778}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Corner4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8629524503379494357}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Corner3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -654,7 +654,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8629524503582833867}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Corner1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -737,7 +737,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8629524503999608127}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Corner2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -769,7 +769,7 @@ GameObject:
   - component: {fileID: 8629524504894183312}
   - component: {fileID: 8629524504894183313}
   - component: {fileID: 8629524504894183311}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MazeController
   m_TagString: mazecontroller
   m_Icon: {fileID: 0}
@@ -856,7 +856,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2486245350019740309}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: UIRoot
   m_TagString: mazeuiroot
   m_Icon: {fileID: 0}
@@ -979,21 +979,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: cubeguymaze
-      objectReference: {fileID: 0}
-    - target: {fileID: 4846670792755091142, guid: feb29c1d5b47a430c954d1af319a952f,
-        type: 3}
-      propertyPath: m_BehaviorType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8318082669008828610, guid: feb29c1d5b47a430c954d1af319a952f,
-        type: 3}
-      propertyPath: rayLength
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8318082669008828610, guid: feb29c1d5b47a430c954d1af319a952f,
-        type: 3}
-      propertyPath: observationStacks
-      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feb29c1d5b47a430c954d1af319a952f, type: 3}
