@@ -49,6 +49,7 @@ public class CameraController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             isOrthographic = !isOrthographic;
+            MazeGenerator.ChangeCameraProjection(isOrthographic);
             GetMazeOrigin();
             if (isOrthographic)
             {
@@ -157,6 +158,10 @@ public class CameraController : MonoBehaviour
 
     private void SetToOrthographic()
     {
+        foreach (GameObject mazeController in GameObject.FindGameObjectsWithTag("mazecontroller"))
+        {
+            mazeController.GetComponent<MazeGenerator>().PlaceUICanvas();
+        }
         Camera.main.orthographic = true;
         mainCamera.transform.localPosition = new Vector3(0.0f, 15.0f, 0.0f);
         mainCamera.transform.localRotation = Quaternion.Euler(90.0f, 0.0f, 0.0f);
@@ -165,6 +170,10 @@ public class CameraController : MonoBehaviour
 
     private void SetToPerspective()
     {
+        foreach (GameObject mazeController in GameObject.FindGameObjectsWithTag("mazecontroller"))
+        {
+            mazeController.GetComponent<MazeGenerator>().PlaceUICanvas();
+        }
         Camera.main.orthographic = false;
         mainCamera.transform.localPosition = new Vector3(0.0f, 30.0f, -35.0f);
         mainCamera.transform.localRotation = Quaternion.Euler(40.0f, 0.0f, 0.0f);

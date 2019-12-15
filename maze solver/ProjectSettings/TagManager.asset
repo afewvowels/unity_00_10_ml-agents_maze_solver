@@ -12,6 +12,9 @@ TagManager:
   - mazeobstacle
   - mazescene
   - mazeguide
+  - mazecontroller
+  - mazeuiroot
+  - mazecanvas
   layers:
   - Default
   - TransparentFX

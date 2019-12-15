@@ -47,7 +47,7 @@ public class MazeAgent : Agent
 
         Vector3 movement = new Vector3(125.0f, 0.0f, 0.0f);
 
-        switch(moveAction)
+        switch (moveAction)
         {
             case 1:
                 agentRB.AddRelativeForce(movement, ForceMode.Force);
@@ -56,11 +56,11 @@ public class MazeAgent : Agent
                 agentRB.AddRelativeForce(movement * 2.0f, ForceMode.Force);
                 break;
             case 3:
-                agentRB.AddRelativeForce(-movement, ForceMode.Force);
+                agentRB.AddRelativeForce(-movement * 0.75f, ForceMode.Force);
                 break;
         }
 
-        switch(rotateAction)
+        switch (rotateAction)
         {
             case 1:
                 transform.Rotate(0.0f, -5.0f, 0.0f);
@@ -108,6 +108,8 @@ public class MazeAgent : Agent
         agentRB.velocity = Vector3.zero;
         agentRB.angularVelocity = Vector3.zero;
         mazeGenerator.DestroyMaze();
+        actions = 0;
+        treasuresCollected = 0;
         MakeMaze();
     }
 

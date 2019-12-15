@@ -43,6 +43,9 @@ public class MazeGenerator : MonoBehaviour
     private MazeDataGenerator mazeDataGenerator;
     private MazeMeshGenerator mazeMeshGenerator;
     public bool flag = true;
+    public static bool isOrthographic = true;
+
+    public Vector3 offset;
 
     private int[,] solvedMaze;
 
@@ -59,6 +62,11 @@ public class MazeGenerator : MonoBehaviour
 
     private void Start()
     {
+        float xOffset = (float)sceneRoot.GetComponent<MazeSceneIndex>().xIndex * MazeSceneIndex.offset;
+        float zOffset = (float)sceneRoot.GetComponent<MazeSceneIndex>().zIndex * MazeSceneIndex.offset;
+
+        offset = new Vector3(xOffset, 0.0f, zOffset);
+
         pathToTravel = new List<int[]>();
         treasureLocations = new List<int[]>();
 
@@ -217,10 +225,10 @@ public class MazeGenerator : MonoBehaviour
     {
         float cellWidth = mazeMeshGenerator.width;
 
-        corners[0].transform.position = new Vector3(cellWidth, 0.0f, cellWidth);
-        corners[1].transform.position = new Vector3(cellWidth * (cols - 2), 0.0f, cellWidth);
-        corners[2].transform.position = new Vector3(cellWidth * (cols - 2), 0.0f, cellWidth * (rows - 2));
-        corners[3].transform.position = new Vector3(cellWidth, 0.0f, cellWidth * (rows - 2));
+        corners[0].transform.position = new Vector3(cellWidth, 0.0f, cellWidth) + offset;
+        corners[1].transform.position = new Vector3(cellWidth * (cols - 2), 0.0f, cellWidth) + offset;
+        corners[2].transform.position = new Vector3(cellWidth * (cols - 2), 0.0f, cellWidth * (rows - 2)) + offset;
+        corners[3].transform.position = new Vector3(cellWidth, 0.0f, cellWidth * (rows - 2)) + offset;
     }
 
     private void PlaceStartEndAndGuides(bool makeInterior, bool obstacles = false)
@@ -231,7 +239,7 @@ public class MazeGenerator : MonoBehaviour
         }
 
         float multiplier = mazeMeshGenerator.width;
-        Vector3 newPosition = new Vector3(startTuple[1] * multiplier, 0.0f, startTuple[0] * multiplier);
+        Vector3 newPosition = new Vector3(startTuple[1] * multiplier, 0.0f, startTuple[0] * multiplier) + offset;
 
         start = (GameObject)Instantiate(start);
         start.transform.SetParent(sceneRoot.transform, false);
@@ -239,7 +247,7 @@ public class MazeGenerator : MonoBehaviour
         mazeAgent.transform.localPosition = newPosition;
         mazeAgent.transform.localRotation = Quaternion.Euler(0.0f, 360.0f * UnityEngine.Random.value, 0.0f);
 
-        newPosition = new Vector3(endTuple[1] * multiplier, 0.0f, endTuple[0] * multiplier);
+        newPosition = new Vector3(endTuple[1] * multiplier, 0.0f, endTuple[0] * multiplier) + offset;
 
         end = (GameObject)Instantiate(end);
         end.transform.SetParent(sceneRoot.transform, false);
@@ -267,7 +275,7 @@ public class MazeGenerator : MonoBehaviour
                             {
                                 float rotateModifier;
                                 GameObject obstacle = (GameObject)Instantiate(obstaclePrefab);
-                                Vector3 positionToPlace = new Vector3(j * multiplier, 0.0f, i * multiplier);
+                                Vector3 positionToPlace = new Vector3(j * multiplier, 0.0f, i * multiplier) + offset;
                                 obstacle.transform.SetParent(instantiatedContainer.transform, false);
                                 obstacle.transform.localPosition = positionToPlace;
 
@@ -295,7 +303,7 @@ public class MazeGenerator : MonoBehaviour
                         else
                         {
                             GameObject graphic = (GameObject)Instantiate(guide);
-                            Vector3 positionToPlace = new Vector3(j * multiplier, 0.0f, i * multiplier);
+                            Vector3 positionToPlace = new Vector3(j * multiplier, 0.0f, i * multiplier) + offset;
                             graphic.transform.SetParent(instantiatedContainer.transform, false);
                             graphic.transform.localPosition = positionToPlace;
 
@@ -341,7 +349,7 @@ public class MazeGenerator : MonoBehaviour
                         float chance = UnityEngine.Random.value;
                         GameObject treasure = (GameObject)Instantiate(treasurePrefab);
                         treasure.transform.SetParent(instantiatedContainer.transform, false);
-                        Vector3 treasurePosition = new Vector3(row * multiplier, 0.0f, col * multiplier);
+                        Vector3 treasurePosition = new Vector3(row * multiplier, 0.0f, col * multiplier) + offset;
                         treasure.transform.localPosition = treasurePosition;
 
                         if (chance > 0.9f)
@@ -485,7 +493,7 @@ public class MazeGenerator : MonoBehaviour
         {
             GameObject treasure = (GameObject)Instantiate(treasurePrefab);
             treasure.transform.SetParent(instantiatedContainer.transform, false);
-            Vector3 treasurePosition = new Vector3(coordinate[1] * multiplier, 0.0f, coordinate[0] * multiplier);
+            Vector3 treasurePosition = new Vector3(coordinate[1] * multiplier, 0.0f, coordinate[0] * multiplier) + offset;
             treasure.transform.localPosition = treasurePosition;
 
             float chance = UnityEngine.Random.value;
@@ -633,19 +641,67 @@ public class MazeGenerator : MonoBehaviour
         solvedMaze = localMaze;
     }
 
-    private void PlaceUICanvas()
+    public static void ChangeCameraProjection(bool isOrthographic)
     {
-        float offset = 0.0f;
+        MazeGenerator.isOrthographic = isOrthographic;
+    }
 
-        for (int i = 0; i < sceneRoot.transform.childCount; i++)
+    public void PlaceUICanvas()
+    {
+        float uioffsetX = 0.0f;
+        float uioffsetZ = 0.0f;
+
+        float uirootX = 0.0f;
+        float uirootZ = 0.0f;
+
+        Quaternion rotationOffset = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+
+        if (!isOrthographic)
         {
-            if (sceneRoot.transform.GetChild(i).gameObject.CompareTag("mazemesh"))
+            for (int i = 0; i < sceneRoot.transform.childCount; i++)
             {
-                offset = sceneRoot.transform.GetChild(i).gameObject.GetComponent<MeshRenderer>().bounds.extents.x;
-                break;
+                if (sceneRoot.transform.GetChild(i).gameObject.CompareTag("mazemesh"))
+                {
+                    // uioffsetX = sceneRoot.transform.GetChild(i).gameObject.GetComponent<MeshCollider>().bounds.center.x;
+                    uioffsetX = sceneRoot.transform.GetChild(i).gameObject.GetComponent<Renderer>().bounds.max.x -
+                                sceneRoot.transform.GetChild(i).gameObject.GetComponent<Renderer>().bounds.extents.x;
+                    uioffsetZ = sceneRoot.transform.GetChild(i).gameObject.GetComponent<Renderer>().bounds.max.z;
+
+                    uirootX = sceneRoot.transform.GetChild(i).gameObject.GetComponent<Renderer>().bounds.min.x;
+                    uirootZ = sceneRoot.transform.GetChild(i).gameObject.GetComponent<Renderer>().bounds.min.z;
+
+                    rotationOffset = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                    break;
+                }
             }
         }
-        Vector3 uiPos = new Vector3(-offset, 10.0f, 0.0f);
-        uiCanvas.transform.localPosition = uiPos;
+        else
+        {
+            for (int i = 0; i < sceneRoot.transform.childCount; i++)
+            {
+                if (sceneRoot.transform.GetChild(i).gameObject.CompareTag("mazemesh"))
+                {
+                    uioffsetX = sceneRoot.transform.GetChild(i).gameObject.GetComponent<Renderer>().bounds.min.x;
+                    uioffsetZ = sceneRoot.transform.GetChild(i).gameObject.GetComponent<Renderer>().bounds.min.z;
+
+                    uirootX = sceneRoot.transform.GetChild(i).gameObject.GetComponent<Renderer>().bounds.min.x;
+                    uirootZ = sceneRoot.transform.GetChild(i).gameObject.GetComponent<Renderer>().bounds.min.z;
+
+                    uioffsetX += 5.0f;
+                    uioffsetZ += 2.5f;
+
+                    uirootX += 5.0f;
+                    uirootZ += 2.5f;
+
+                    rotationOffset = Quaternion.Euler(90.0f, 0.0f, 0.0f);
+                    break;
+                }
+            }
+        }
+            
+        Vector3 uiPos = new Vector3(uioffsetX, 8.0f, uioffsetZ);
+        uiCanvas.transform.parent.transform.position = new Vector3(uirootX, 0.0f, uirootZ);
+        uiCanvas.transform.position = uiPos;
+        uiCanvas.transform.localRotation = rotationOffset;
     }
 }
