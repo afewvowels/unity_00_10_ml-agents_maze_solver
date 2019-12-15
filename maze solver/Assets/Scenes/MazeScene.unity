@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43748927, g: 0.48531228, b: 0.56558704, a: 1}
+  m_IndirectSpecularColor: {r: 0.4374898, g: 0.48531306, b: 0.56558794, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -692,7 +692,7 @@ GameObject:
   - component: {fileID: 610607165}
   - component: {fileID: 610607164}
   m_Layer: 0
-  m_Name: Academy
+  m_Name: MazeAcademy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -714,13 +714,13 @@ MonoBehaviour:
     width: 80
     height: 80
     qualityLevel: 1
-    timeScale: 1
+    timeScale: 30
     targetFrameRate: 60
   m_InferenceConfiguration:
     width: 1280
     height: 720
     qualityLevel: 5
-    timeScale: 1
+    timeScale: 30
     targetFrameRate: 60
   resetParameters:
     m_ResetParameters:
@@ -820,7 +820,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1e-45, y: 2.73e-43, z: 0, w: 370005250}
+  m_BoundingSphereOverride: {x: 0, y: 2.3509887e-38, z: -2.3059837e+18, w: 5.820766e-11}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0

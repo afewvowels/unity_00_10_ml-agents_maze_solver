@@ -899,6 +899,11 @@ PrefabInstance:
       propertyPath: mazeGenerator
       value: 
       objectReference: {fileID: 8629524504894183311}
+    - target: {fileID: 1545873500208080930, guid: feb29c1d5b47a430c954d1af319a952f,
+        type: 3}
+      propertyPath: agentParameters.maxStep
+      value: 15000
+      objectReference: {fileID: 0}
     - target: {fileID: 1648027259506847791, guid: feb29c1d5b47a430c954d1af319a952f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -959,17 +964,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: cubeguymaze
       objectReference: {fileID: 0}
+    - target: {fileID: 4846670792755091142, guid: feb29c1d5b47a430c954d1af319a952f,
+        type: 3}
+      propertyPath: m_BehaviorType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318082669008828610, guid: feb29c1d5b47a430c954d1af319a952f,
+        type: 3}
+      propertyPath: rayLength
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318082669008828610, guid: feb29c1d5b47a430c954d1af319a952f,
+        type: 3}
+      propertyPath: observationStacks
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feb29c1d5b47a430c954d1af319a952f, type: 3}
---- !u!4 &3654827358802650805 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1648027259506847791, guid: feb29c1d5b47a430c954d1af319a952f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2622913652467914394}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &352362443606414502 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2343457127928300092, guid: feb29c1d5b47a430c954d1af319a952f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2622913652467914394}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3654827358802650805 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1648027259506847791, guid: feb29c1d5b47a430c954d1af319a952f,
     type: 3}
   m_PrefabInstance: {fileID: 2622913652467914394}
   m_PrefabAsset: {fileID: 0}

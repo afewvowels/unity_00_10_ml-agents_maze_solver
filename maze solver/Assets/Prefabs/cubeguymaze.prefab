@@ -88,7 +88,7 @@ MonoBehaviour:
     vectorActionSpaceType: 0
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: CubeGuyMaze
 --- !u!114 &1545873500208080930
 MonoBehaviour:
@@ -118,7 +118,6 @@ MonoBehaviour:
   actionsText: {fileID: 0}
   treasuresText: {fileID: 0}
   goalsText: {fileID: 0}
-  uiCanvas: {fileID: 0}
   currentMazeWidth: 0
 --- !u!114 &8318082669008828610
 MonoBehaviour:

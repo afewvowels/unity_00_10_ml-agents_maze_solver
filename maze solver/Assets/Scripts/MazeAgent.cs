@@ -35,6 +35,11 @@ public class MazeAgent : Agent
 
     }
 
+    public override void CollectObservations()
+    {
+        AddVectorObs(actions);
+    }
+
     public override void AgentAction(float[] vectorAction)
     {
         var moveAction = Mathf.FloorToInt(vectorAction[0]);

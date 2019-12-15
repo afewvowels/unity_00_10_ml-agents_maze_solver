@@ -27,7 +27,8 @@ CubeGuyMaze:
     batch_size: 512
     buffer_size: 5120
     max_steps: 3.0e5
-    use_reuccrent: true
+    use_recurrent: true
+    learning_rate_schedule: constant
     vis_encode_type: nature_cnn
     reward_signals:
         curiosity:
