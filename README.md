@@ -20,4 +20,4 @@ The agent is equipped with raycast sensors and a render texture sensor. The agen
 
 I haven't had much luck training visually before so that render texture sensor is really only going to let the agent know what reward level to expect from the treasure its about to pick up. It will also let it follow the trail of pink graphics from start to end (although my pathfinding algorithm only finds a path, not the shortest path so we'll see if the agent is able to discover a quicker way to the goal in time).
 
-Anyway, I'm loving working with [Unity's ML Agents toolkit](https://github.com/Unity-Technologies/ml-agents) and if you haven't seen it before, definitely check it out!
+Anyway, I'm loving working with [Unity's ML-Agents toolkit](https://github.com/Unity-Technologies/ml-agents) and if you haven't seen it before, definitely check it out!
