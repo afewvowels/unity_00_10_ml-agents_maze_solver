@@ -22,11 +22,11 @@ I haven't had much luck training visually before so that render texture sensor i
 
 ## Camera Controls
 For your viewing pleasure there are camera controls!
--O - Switch between orthographic & perspective cameras
--Z - Resize camera bounds to maze dimensions (orthographic)
-  -Hit this as soon as you start up the program!
--Z - Center the camera (perspective)
--WASD - Move the camera around (perspective)
--QE - Rotate the camera (perspective)
+* O - Switch between orthographic & perspective cameras
+* Z - Resize camera bounds to maze dimensions (orthographic)
+  * Hit this as soon as you start up the program!
+* Z - Center the camera (perspective)
+* WASD - Move the camera around (perspective)
+* QE - Rotate the camera (perspective)
 
 Anyway, I'm loving working with [Unity's ML-Agents toolkit](https://github.com/Unity-Technologies/ml-agents) and if you haven't seen it before, definitely check it out!
