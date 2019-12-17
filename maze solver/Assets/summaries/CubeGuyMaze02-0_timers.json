@@ -1,107 +1,98 @@
 {
   "name": "root",
-  "gauges": [
-    {
-      "name": "CubeGuyMaze.mean_reward",
-      "value": 1.3000000044703484,
-      "min": 1.25,
-      "max": 2.0383333346496024,
-      "count": 10
-    }
-  ],
-  "total": 1640.2690141,
+  "total": 38.6124924,
   "count": 1,
-  "self": 13.978261199991039,
+  "self": 9.46814239999999,
   "children": [
     {
       "name": "TrainerController.advance",
-      "total": 1626.290752900009,
-      "count": 14866,
-      "self": 159.71410490001335,
+      "total": 29.14435000000001,
+      "count": 442,
+      "self": 3.1613255000000464,
       "children": [
         {
           "name": "env_step",
-          "total": 553.3108598999947,
-          "count": 14866,
-          "self": 492.0221270999938,
+          "total": 12.41124929999996,
+          "count": 442,
+          "self": 10.967288199999976,
           "children": [
             {
               "name": "SubprocessEnvManager._take_step",
-              "total": 61.12126230000209,
-              "count": 14866,
-              "self": 0.5084283000105998,
+              "total": 1.4392770999999929,
+              "count": 442,
+              "self": 0.012337299999954254,
               "children": [
                 {
                   "name": "PPOPolicy.evaluate",
-                  "total": 60.61283399999149,
-                  "count": 14866,
-                  "self": 60.61283399999149
+                  "total": 1.4269398000000386,
+                  "count": 442,
+                  "self": 1.4269398000000386
                 }
               ]
             },
             {
               "name": "workers",
-              "total": 0.1674704999988812,
-              "count": 14865,
+              "total": 0.004683999999992139,
+              "count": 441,
               "self": 0.0,
               "children": [
                 {
                   "name": "worker_root",
-                  "total": 1636.8561421999923,
-                  "count": 14865,
+                  "total": 37.21165620000001,
+                  "count": 441,
                   "is_parallel": true,
-                  "self": 1263.073817999991,
+                  "self": 28.670094800000008,
                   "children": [
                     {
                       "name": "BrainInfo.process_pixels",
-                      "total": 0.02793580000013307,
-                      "count": 30,
+                      "total": 0.013180999999999443,
+                      "count": 10,
                       "is_parallel": true,
-                      "self": 0.0022312000001827315,
+                      "self": 0.0009082000000013579,
                       "children": [
                         {
                           "name": "image_decompress",
-                          "total": 0.02570459999995034,
-                          "count": 30,
+                          "total": 0.012272799999998085,
+                          "count": 10,
                           "is_parallel": true,
-                          "self": 0.02570459999995034
+                          "self": 0.012272799999998085
                         }
                       ]
                     },
                     {
                       "name": "UnityEnvironment.step",
-                      "total": 373.7543884000012,
-                      "count": 14865,
+                      "total": 8.528380400000001,
+                      "count": 441,
                       "is_parallel": true,
-                      "self": 23.795388299933393,
+                      "self": 0.4974866999999321,
                       "children": [
                         {
                           "name": "UnityEnvironment._generate_step_input",
-                          "total": 1.6215976999877935,
-                          "count": 14865,
+                          "total": 0.03969809999996343,
+                          "count": 441,
                           "is_parallel": true,
-                          "self": 1.6215976999877935
+                          "self": 0.03969809999996343
                         },
                         {
                           "name": "communicator.exchange",
-                          "total": 294.9231831000186,
-                          "count": 14865,
+                          "total": 6.957853299999972,
+                          "count": 441,
                           "is_parallel": true,
-                          "self": 294.9231831000186
+                          "self": 6.957853299999972
                         },
                         {
                           "name": "BrainInfo.process_pixels",
-                          "total": 53.4142193000614,
-                          "count": 222975,
+                          "total": 1.0333423000001343,
+                          "count": 4410,
                           "is_parallel": true,
-                          "self": 14.103387700040564,
+                          "self": 0.33780300000025854,
                           "children": [
                             {
                               "name": "image_decompress",
-                              "total": 39.31083160002083,
-                              "count": 222975,
+                              "total": 0.6955392999998757,
+                              "count": 4410,
                               "is_parallel": true,
-                              "self": 39.31083160002083
+                              "self": 0.6955392999998757
                             }
                           ]
                         }
@@ -115,15 +106,15 @@
         },
         {
           "name": "update_policy",
-          "total": 913.2657881000008,
-          "count": 76,
-          "self": 7.762499999997544,
+          "total": 13.571775200000001,
+          "count": 1,
+          "self": 0.10855529999998836,
           "children": [
             {
               "name": "PPOPolicy.update",
-              "total": 905.5032881000033,
-              "count": 2508,
-              "self": 905.5032881000033
+              "total": 13.463219900000013,
+              "count": 36,
+              "self": 13.463219900000013
             }
           ]
         }

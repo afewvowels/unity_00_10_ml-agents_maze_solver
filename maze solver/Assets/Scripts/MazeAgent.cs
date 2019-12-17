@@ -45,18 +45,18 @@ public class MazeAgent : Agent
         var moveAction = Mathf.FloorToInt(vectorAction[0]);
         var rotateAction = Mathf.FloorToInt(vectorAction[1]);
 
-        Vector3 movement = new Vector3(125.0f, 0.0f, 0.0f);
+        Vector3 movement = new Vector3(0.0f, 0.0f, 1.0f);
 
         switch (moveAction)
         {
             case 1:
-                agentRB.AddRelativeForce(movement, ForceMode.Force);
+                agentRB.AddRelativeForce(movement, ForceMode.VelocityChange);
                 break;
             case 2:
-                agentRB.AddRelativeForce(movement * 2.0f, ForceMode.Force);
+                agentRB.AddRelativeForce(movement * 2.0f, ForceMode.VelocityChange);
                 break;
             case 3:
-                agentRB.AddRelativeForce(-movement * 0.75f, ForceMode.Force);
+                agentRB.AddRelativeForce(-movement * 0.75f, ForceMode.VelocityChange);
                 break;
         }
 

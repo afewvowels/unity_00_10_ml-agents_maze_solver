@@ -1,21 +1,22 @@
 default:
-    trainer: ppo
-    batch_size: 1024
-    beta: 5.0e-3
-    buffer_size: 10240
-    epsilon: 0.2
+    trainer: sac
+    batch_size: 128
+    buffer_size: 50000
+    buffer_init_steps: 0
     hidden_units: 128
-    lambd: 0.95
+    init_entcoef: 1.0
     learning_rate: 3.0e-4
-    learning_rate_schedule: linear
+    learning_rate_schedule: constant
     max_steps: 5.0e4
     memory_size: 256
     normalize: false
-    num_epoch: 3
+    num_update: 1
+    train_interval: 1
     num_layers: 2
     time_horizon: 64
     sequence_length: 64
     summary_freq: 1000
+    tau: 0.005
     use_recurrent: false
     vis_encode_type: simple
     reward_signals:
@@ -24,16 +25,15 @@ default:
             gamma: 0.99
 
 CubeGuyMaze:
-    # batch_size: 512
-    # buffer_size: 5120
-    time_horizon: 256
-    num_layers: 3
-    max_steps: 1.6e6
-    use_recurrent: true
-    learning_rate_schedule: constant
+    buffer_size: 250000
+    buffer_init_steps: 10000
+    init_entcoef: 0.85
+    time_horizon: 2048
+    max_steps: 5.0e5
+    hidden_units: 256
     # vis_encode_type: nature_cnn
     reward_signals:
         curiosity:
-            strength: 0.07
+            strength: 0.1
             gamma: 0.99
             encoding_size: 256

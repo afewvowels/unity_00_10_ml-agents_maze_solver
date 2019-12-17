@@ -6,6 +6,7 @@ public class Gem : MonoBehaviour
 {
     void Start()
     {
+        transform.rotation = Quaternion.Euler(0.0f, 360.0f * Random.value, 0.0f);
         StopAllCoroutines();
         StartCoroutine(RotateAndStuff());
         StartCoroutine(MoveUpAndDown());
@@ -13,12 +14,9 @@ public class Gem : MonoBehaviour
 
     private IEnumerator RotateAndStuff()
     {
-        Quaternion fromRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-        Quaternion toRotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
-
-        for (float t = 0.0f; t < 1.0f; t += Time.fixedDeltaTime * 0.25f)
+        for (int i = 0; i < 72; i++)
         {
-            transform.localRotation = Quaternion.Lerp(fromRotation, toRotation, t);
+            transform.Rotate(new Vector3(0.0f, 5.0f, 0.0f));
             yield return null;
         }
 
