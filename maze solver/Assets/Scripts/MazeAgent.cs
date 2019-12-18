@@ -19,14 +19,16 @@ public class MazeAgent : Agent
 
     private void Start()
     {
+        academy = FindObjectOfType<MazeAcademy>();
         agentRB = GetComponent<Rigidbody>();
         actions = 0;
         treasuresCollected = 0;
         goals = 0;
         rewards = 0.0f;
         actionsText.text = "0";
-        rewardsText.text = "0.000";
-        academy = FindObjectOfType<MazeAcademy>();
+        rewardsText.text = rewards.ToString("0.000");
+        goalsText.text = goals.ToString();
+        treasuresText.text = treasuresCollected.ToString();
         MakeMaze();
     }
 
@@ -56,7 +58,7 @@ public class MazeAgent : Agent
                 agentRB.AddRelativeForce(movement * 2.0f, ForceMode.VelocityChange);
                 break;
             case 3:
-                agentRB.AddRelativeForce(-movement * 0.75f, ForceMode.VelocityChange);
+                agentRB.AddRelativeForce(movement * -0.333f, ForceMode.VelocityChange);
                 break;
         }
 
@@ -108,12 +110,14 @@ public class MazeAgent : Agent
         agentRB.velocity = Vector3.zero;
         agentRB.angularVelocity = Vector3.zero;
         mazeGenerator.DestroyMaze();
+        rewards = 0.0f;
         actions = 0;
         actionsText.text = actions.ToString();
         treasuresCollected = 0;
         treasuresText.text = treasuresCollected.ToString();
         MakeMaze();
     }
+
     public void UpdateRewardsText()
     {
         rewardsText.text = rewards.ToString("0.000");

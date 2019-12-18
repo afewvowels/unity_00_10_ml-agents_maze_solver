@@ -23,15 +23,29 @@ default:
             strength: 1.0
             gamma: 0.99
 
-CubeGuyMaze:
-    # batch_size: 512
-    # buffer_size: 5120
+# CubeGuyMaze:
+#     # batch_size: 512
+#     # buffer_size: 5120
+#     time_horizon: 256
+#     num_layers: 3
+#     max_steps: 1.6e6
+#     use_recurrent: true
+#     learning_rate_schedule: constant
+#     # vis_encode_type: nature_cnn
+#     reward_signals:
+#         curiosity:
+#             strength: 0.07
+#             gamma: 0.99
+#             encoding_size: 256
+
+CubeGuyMazeRaycast:
+    batch_size: 512
+    buffer_size: 5120
     time_horizon: 256
     num_layers: 3
-    max_steps: 1.6e6
+    max_steps: 3.0e6
     use_recurrent: true
     learning_rate_schedule: constant
-    # vis_encode_type: nature_cnn
     reward_signals:
         curiosity:
             strength: 0.07

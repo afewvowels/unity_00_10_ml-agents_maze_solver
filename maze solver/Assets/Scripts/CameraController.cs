@@ -112,12 +112,12 @@ public class CameraController : MonoBehaviour
 
     private void RotateLeft()
     {
-        transform.Rotate(0.0f, -1.0f, 0.0f);
+        transform.Rotate(0.0f, -5.0f, 0.0f);
     }
 
     private void RotateRight()
     {
-        transform.Rotate(0.0f, 1.0f, 0.0f);
+        transform.Rotate(0.0f, 5.0f, 0.0f);
     }
 
     private void GetMazeOrigin()

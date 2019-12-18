@@ -58,12 +58,10 @@ public class MazeGenerator : MonoBehaviour
     {
         mazeDataGenerator = new MazeDataGenerator();
         mazeMeshGenerator = new MazeMeshGenerator();
-    }
 
-    private void Start()
-    {
-        float xOffset = (float)sceneRoot.GetComponent<MazeSceneIndex>().xIndex * MazeSceneIndex.offset;
-        float zOffset = (float)sceneRoot.GetComponent<MazeSceneIndex>().zIndex * MazeSceneIndex.offset;
+        MazeSceneIndex msIndex = sceneRoot.GetComponent<MazeSceneIndex>();
+        float xOffset = (float)msIndex.xIndex * msIndex.offset;
+        float zOffset = (float)msIndex.zIndex * msIndex.offset;
 
         offset = new Vector3(xOffset, 0.0f, zOffset);
 
@@ -74,6 +72,10 @@ public class MazeGenerator : MonoBehaviour
         instantiatedTreasures = new List<GameObject>();
         instantiatedObstacles = new List<GameObject>();
         instantiatedGuides = new List<GameObject>();
+    }
+
+    private void Start()
+    {
     }
 
     public void CreateMaze(int rows, int cols, bool makeInterior, bool obstacles)
@@ -89,7 +91,7 @@ public class MazeGenerator : MonoBehaviour
             GetTreasureLocations();
             PlaceTreasure();
         }
-        PrintMaze();
+        // PrintMaze();
         PlaceUICanvas();
     }
 
@@ -207,7 +209,7 @@ public class MazeGenerator : MonoBehaviour
         go.name = "Maze";
         go.tag = "mazemesh";
         go.transform.SetParent(sceneRoot.transform, false);
-        go.transform.localPosition = sceneRoot.transform.position;
+        go.transform.position = sceneRoot.transform.position;
 
         MeshFilter mf = go.AddComponent<MeshFilter>();
         mf.mesh = mazeMeshGenerator.FromData(data);
@@ -243,15 +245,15 @@ public class MazeGenerator : MonoBehaviour
 
         start = (GameObject)Instantiate(start);
         start.transform.SetParent(sceneRoot.transform, false);
-        start.transform.localPosition = newPosition;
-        mazeAgent.transform.localPosition = newPosition;
+        start.transform.position = newPosition;
+        mazeAgent.transform.position = newPosition;
         mazeAgent.transform.localRotation = Quaternion.Euler(0.0f, 360.0f * UnityEngine.Random.value, 0.0f);
 
         newPosition = new Vector3(endTuple[1] * multiplier, 0.0f, endTuple[0] * multiplier) + offset;
 
         end = (GameObject)Instantiate(end);
         end.transform.SetParent(sceneRoot.transform, false);
-        end.transform.localPosition = newPosition;
+        end.transform.position = newPosition;
 
         if (makeInterior)
         {
@@ -277,7 +279,7 @@ public class MazeGenerator : MonoBehaviour
                                 GameObject obstacle = (GameObject)Instantiate(obstaclePrefab);
                                 Vector3 positionToPlace = new Vector3(j * multiplier, 0.0f, i * multiplier) + offset;
                                 obstacle.transform.SetParent(instantiatedContainer.transform, false);
-                                obstacle.transform.localPosition = positionToPlace;
+                                obstacle.transform.position = positionToPlace;
 
                                 instantiatedObstacles.Add(obstacle);
 
@@ -305,7 +307,7 @@ public class MazeGenerator : MonoBehaviour
                             GameObject graphic = (GameObject)Instantiate(guide);
                             Vector3 positionToPlace = new Vector3(j * multiplier, 0.0f, i * multiplier) + offset;
                             graphic.transform.SetParent(instantiatedContainer.transform, false);
-                            graphic.transform.localPosition = positionToPlace;
+                            graphic.transform.position = positionToPlace;
 
                             instantiatedGuides.Add(graphic);
 
@@ -342,7 +344,7 @@ public class MazeGenerator : MonoBehaviour
                 {
                     continue;   
                 }
-                else if (!treasurePositions.Contains(pos))
+                else if (!IsInList(treasurePositions, pos))
                 {
                     if (UnityEngine.Random.value > 0.8f)
                     {
@@ -350,7 +352,7 @@ public class MazeGenerator : MonoBehaviour
                         GameObject treasure = (GameObject)Instantiate(treasurePrefab);
                         treasure.transform.SetParent(instantiatedContainer.transform, false);
                         Vector3 treasurePosition = new Vector3(row * multiplier, 0.0f, col * multiplier) + offset;
-                        treasure.transform.localPosition = treasurePosition;
+                        treasure.transform.position = treasurePosition;
 
                         if (chance > 0.9f)
                         {
@@ -494,7 +496,7 @@ public class MazeGenerator : MonoBehaviour
             GameObject treasure = (GameObject)Instantiate(treasurePrefab);
             treasure.transform.SetParent(instantiatedContainer.transform, false);
             Vector3 treasurePosition = new Vector3(coordinate[1] * multiplier, 0.0f, coordinate[0] * multiplier) + offset;
-            treasure.transform.localPosition = treasurePosition;
+            treasure.transform.position = treasurePosition;
 
             float chance = UnityEngine.Random.value;
 
@@ -703,5 +705,18 @@ public class MazeGenerator : MonoBehaviour
         uiCanvas.transform.parent.transform.position = new Vector3(uirootX, 0.0f, uirootZ);
         uiCanvas.transform.position = uiPos;
         uiCanvas.transform.localRotation = rotationOffset;
+    }
+
+    private bool IsInList(List<int[]> inputList, int[] input)
+    {
+        foreach (int[] cell in inputList)
+        {
+            if (cell[0] == input[0] && cell[1] == input[1])
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
