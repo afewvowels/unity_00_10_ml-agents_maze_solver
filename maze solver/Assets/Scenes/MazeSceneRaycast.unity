@@ -875,13 +875,13 @@ MonoBehaviour:
     width: 1024
     height: 1024
     qualityLevel: 0
-    timeScale: 1
+    timeScale: 30
     targetFrameRate: 15
   m_InferenceConfiguration:
     width: 1024
     height: 1024
     qualityLevel: 0
-    timeScale: 1
+    timeScale: 30
     targetFrameRate: 15
   resetParameters:
     m_ResetParameters:
