@@ -1,0 +1,1 @@
+I'm pretty sure I remember hearing in class that Unity is x-forward but, haha, it's not. So you may need to rotate some of these objects then parent them to empty gameobjects to get transform.forward and stuff to work right.
