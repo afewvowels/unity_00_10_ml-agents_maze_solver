@@ -22,6 +22,7 @@ I haven't had much luck training visually before so that render texture sensor i
 
 ## Camera Controls
 For your viewing pleasure there are camera controls!
+* Space - Change which maze the camera is focused on
 * O - Switch between orthographic & perspective cameras
 * Z - Resize camera bounds to maze dimensions (orthographic)
   * Hit this as soon as you start up the program!
