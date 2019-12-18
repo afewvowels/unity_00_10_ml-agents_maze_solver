@@ -875,13 +875,13 @@ MonoBehaviour:
     width: 1024
     height: 1024
     qualityLevel: 0
-    timeScale: 20
+    timeScale: 1
     targetFrameRate: 15
   m_InferenceConfiguration:
     width: 1024
     height: 1024
     qualityLevel: 0
-    timeScale: 20
+    timeScale: 1
     targetFrameRate: 15
   resetParameters:
     m_ResetParameters:
@@ -2323,6 +2323,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2810625926947403044, guid: 4df6fd084929cd4409991836b90259c3,
+        type: 3}
+      propertyPath: m_Name
+      value: cubeguymazeraycast
+      objectReference: {fileID: 0}
     - target: {fileID: 4726474164438910610, guid: 4df6fd084929cd4409991836b90259c3,
         type: 3}
       propertyPath: offset

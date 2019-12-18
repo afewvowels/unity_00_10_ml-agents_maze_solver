@@ -16,6 +16,8 @@ public class MazeAgent : Agent
     public Text treasuresText;
     public Text goalsText;
     public int currentMazeWidth;
+    public Color goodRewardsColor;
+    public Color badRewardsColor;
 
     private void Start()
     {
@@ -102,6 +104,11 @@ public class MazeAgent : Agent
             action[1] = 2.0f;
         }
 
+        float existentialPenalty = -1.0f / 50000.0f;
+        AddReward(existentialPenalty);
+        rewards += existentialPenalty;
+        UpdateRewardsText();
+
         return action;
     }
 
@@ -121,6 +128,14 @@ public class MazeAgent : Agent
     public void UpdateRewardsText()
     {
         rewardsText.text = rewards.ToString("0.000");
+        if (rewards >= 0.0f)
+        {
+            rewardsText.color = goodRewardsColor;
+        }
+        else
+        {
+            rewardsText.color = badRewardsColor;
+        }
     }
 
     private void MakeMaze()
@@ -168,8 +183,39 @@ public class MazeAgent : Agent
         treasuresText.text = treasuresCollected.ToString();
     }
 
+    private void OnCollisionEnter(Collision c)
+    {
+        if (c.gameObject.CompareTag("mazewalls"))
+        {
+            float penalty = -1.0f / 500.0f;
+            AddReward(penalty);
+            rewards += penalty;
+            UpdateRewardsText();
+        }
+    }
+
+    private void OnCollisionStay(Collision c)
+    {
+        if (c.gameObject.CompareTag("mazewalls"))
+        {
+            float penalty = -1.0f / 500.0f;
+            AddReward(penalty);
+            rewards += penalty;
+            UpdateRewardsText();
+        }
+    }
+
     private void OnTriggerEnter(Collider c)
     {
+        if (c.gameObject.CompareTag("mazeguide"))
+        {
+            float reward = 1.0f / 100.0f;
+            AddReward(reward);
+            rewards += reward;
+            UpdateRewardsText();
+            Destroy(c.gameObject);
+        }
+
         if (c.gameObject.CompareTag("mazegoal"))
         {
             if (actions < (10000.0f / 10.0f))

@@ -24,6 +24,7 @@ public class MazeGenerator : MonoBehaviour
     public GameObject guide;
     public GameObject sceneRoot;
     public GameObject mazeObject;
+    public GameObject mazeWalls;
     public GameObject instantiatedContainer;
     public GameObject uiCanvas;
 
@@ -100,6 +101,7 @@ public class MazeGenerator : MonoBehaviour
         Destroy(start);
         Destroy(end);
         Destroy(mazeObject);
+        Destroy(mazeWalls);
         foreach (GameObject go in deadEnds)
         {
             Destroy(go);
@@ -212,15 +214,32 @@ public class MazeGenerator : MonoBehaviour
         go.transform.position = sceneRoot.transform.position;
 
         MeshFilter mf = go.AddComponent<MeshFilter>();
-        mf.mesh = mazeMeshGenerator.FromData(data);
+        mf.mesh = mazeMeshGenerator.FloorAndCeillingFromData(data);
 
         MeshCollider mc = go.AddComponent<MeshCollider>();
         mc.sharedMesh = mf.mesh;
 
         MeshRenderer mr = go.AddComponent<MeshRenderer>();
-        mr.materials = new Material[4] { matFloor, matCeiling, matWall, matTop };
+        mr.materials = new Material[3] { matFloor, matCeiling, matTop };
 
         mazeObject = go;
+
+        go = new GameObject();
+        go.name = "MazeWalls";
+        go.tag = "mazewalls";
+        go.transform.SetParent(sceneRoot.transform, false);
+        go.transform.position = sceneRoot.transform.position;
+
+        mf = go.AddComponent<MeshFilter>();
+        mf.mesh = mazeMeshGenerator.WallsFromData(data);
+
+        mc = go.AddComponent<MeshCollider>();
+        mc.sharedMesh = mf.mesh;
+
+        mr = go.AddComponent<MeshRenderer>();
+        mr.materials = new Material[1] { matWall };
+
+        mazeWalls = go;
     }
 
     private void GenerateCorners(int rows, int cols)
