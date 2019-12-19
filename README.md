@@ -31,3 +31,5 @@ For your viewing pleasure there are camera controls!
 * QE - Rotate the camera (perspective)
 
 Anyway, I'm loving working with [Unity's ML-Agents toolkit](https://github.com/Unity-Technologies/ml-agents) and if you haven't seen it before, definitely check it out!
+
+[![CodeFactor](https://www.codefactor.io/repository/github/afewvowels/unity_00_10_ml-agents_maze_solver/badge)](https://www.codefactor.io/repository/github/afewvowels/unity_00_10_ml-agents_maze_solver)
