@@ -79,8 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 1
-    numStackedVectorObservations: 1
+    vectorObservationSize: 6
+    numStackedVectorObservations: 2
     vectorActionSize: 0400000003000000
     vectorActionDescriptions: []
     vectorActionSpaceType: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
-    maxStep: 7000
+    maxStep: 12000
     resetOnDone: 1
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
@@ -116,9 +116,13 @@ MonoBehaviour:
   actionsText: {fileID: 0}
   treasuresText: {fileID: 0}
   goalsText: {fileID: 0}
+  collisionsText: {fileID: 0}
   currentMazeWidth: 0
   goodRewardsColor: {r: 0.06051977, g: 0.754717, b: 0.11416173, a: 1}
   badRewardsColor: {r: 0.8113208, g: 0.06505875, b: 0.06505875, a: 1}
+  collisionCount: 0
+  maxCollisions: 0
+  goalLocation: {fileID: 0}
 --- !u!114 &8318082669008828610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,8 +143,8 @@ MonoBehaviour:
   - mazeobstacle
   - mazeguide
   - mazewalls
-  raysPerDirection: 3
-  maxRayDegrees: 90
+  raysPerDirection: 5
+  maxRayDegrees: 180
   sphereCastRadius: 0
   rayLength: 15
   observationStacks: 5

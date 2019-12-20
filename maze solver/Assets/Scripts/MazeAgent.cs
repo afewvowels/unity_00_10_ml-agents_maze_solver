@@ -15,12 +15,19 @@ public class MazeAgent : Agent
     public Text actionsText;
     public Text treasuresText;
     public Text goalsText;
+    public Text collisionsText;
     public int currentMazeWidth;
     public Color goodRewardsColor;
     public Color badRewardsColor;
+    public int collisionCount;
+    public int maxCollisions;
+    public GameObject goalLocation;
 
     private void Start()
     {
+        collisionCount = 0;
+        maxCollisions = 250;
+        collisionsText.text = collisionCount.ToString();
         academy = FindObjectOfType<MazeAcademy>();
         agentRB = GetComponent<Rigidbody>();
         actions = 0;
@@ -30,7 +37,7 @@ public class MazeAgent : Agent
         actionsText.text = "0";
         rewardsText.text = rewards.ToString("0.000");
         goalsText.text = goals.ToString();
-        treasuresText.text = treasuresCollected.ToString();
+        // treasuresText.text = treasuresCollected.ToString();
         MakeMaze();
     }
 
@@ -41,7 +48,14 @@ public class MazeAgent : Agent
 
     public override void CollectObservations()
     {
+        AddVectorObs(collisionCount);
         AddVectorObs(actions);
+
+        AddVectorObs(goalLocation.transform.position.x);
+        AddVectorObs(goalLocation.transform.position.z);
+
+        AddVectorObs(transform.position.x);
+        AddVectorObs(transform.position.z);
     }
 
     public override void AgentAction(float[] vectorAction)
@@ -51,13 +65,17 @@ public class MazeAgent : Agent
 
         Vector3 movement = new Vector3(0.0f, 0.0f, 1.0f);
 
+        float existentialPenalty = -1.0f / 50000.0f;
+
         switch (moveAction)
         {
             case 1:
                 agentRB.AddRelativeForce(movement, ForceMode.VelocityChange);
+                AddReward(-existentialPenalty);
                 break;
             case 2:
                 agentRB.AddRelativeForce(movement * 2.0f, ForceMode.VelocityChange);
+                AddReward(-existentialPenalty);
                 break;
             case 3:
                 agentRB.AddRelativeForce(movement * -0.333f, ForceMode.VelocityChange);
@@ -73,6 +91,10 @@ public class MazeAgent : Agent
                 transform.Rotate(0.0f, 5.0f, 0.0f);
                 break;
         }
+
+        AddReward(existentialPenalty);
+        rewards += existentialPenalty;
+        UpdateRewardsText();
 
         actions++;
         actionsText.text = actions.ToString();
@@ -104,24 +126,22 @@ public class MazeAgent : Agent
             action[1] = 2.0f;
         }
 
-        float existentialPenalty = -1.0f / 50000.0f;
-        AddReward(existentialPenalty);
-        rewards += existentialPenalty;
-        UpdateRewardsText();
-
         return action;
     }
 
     public override void AgentReset()
     {
+        collisionCount = 0;
+        collisionsText.text = collisionCount.ToString();
         agentRB.velocity = Vector3.zero;
         agentRB.angularVelocity = Vector3.zero;
         mazeGenerator.DestroyMaze();
         rewards = 0.0f;
+        rewardsText.text = rewards.ToString("0.000");
         actions = 0;
         actionsText.text = actions.ToString();
-        treasuresCollected = 0;
-        treasuresText.text = treasuresCollected.ToString();
+        // treasuresCollected = 0;
+        // treasuresText.text = treasuresCollected.ToString();
         MakeMaze();
     }
 
@@ -135,6 +155,17 @@ public class MazeAgent : Agent
         else
         {
             rewardsText.color = badRewardsColor;
+        }
+    }
+
+    public void UpdateCollisions()
+    {
+        collisionCount++;
+        collisionsText.text = collisionCount.ToString();
+        if (collisionCount > maxCollisions)
+        {
+            AddReward(-0.5f);
+            Done();
         }
     }
 
@@ -167,7 +198,26 @@ public class MazeAgent : Agent
         {
             width++;
         }
+
+        // if (width > 20)
+        // {
+        //     this.agentParameters.maxStep = 15000;
+        // }
+        // else if (width > 15)
+        // {
+        //     this.agentParameters.maxStep = 10000;
+        // }
+        // else if (width > 10)
+        // {
+        //     this.agentParameters.maxStep = 5000;
+        // }
+        // else
+        // {
+        //     this.agentParameters.maxStep = 2500;
+        // }
+
         currentMazeWidth = width;
+        mazeGenerator.guideChance = academy.resetParameters["guidechance"];
         mazeGenerator.CreateMaze(width, width, makeInterior, obstacles);
     }
 
@@ -179,18 +229,19 @@ public class MazeAgent : Agent
 
     public void PickedUpTreasure()
     {
-        treasuresCollected++;
-        treasuresText.text = treasuresCollected.ToString();
+        // treasuresCollected++;
+        // treasuresText.text = treasuresCollected.ToString();
     }
 
     private void OnCollisionEnter(Collision c)
     {
         if (c.gameObject.CompareTag("mazewalls"))
         {
-            float penalty = -1.0f / 500.0f;
+            float penalty = -1.0f / 1000.0f;
             AddReward(penalty);
             rewards += penalty;
             UpdateRewardsText();
+            UpdateCollisions();
         }
     }
 
@@ -202,6 +253,7 @@ public class MazeAgent : Agent
             AddReward(penalty);
             rewards += penalty;
             UpdateRewardsText();
+            UpdateCollisions();
         }
     }
 
@@ -209,7 +261,7 @@ public class MazeAgent : Agent
     {
         if (c.gameObject.CompareTag("mazeguide"))
         {
-            float reward = 1.0f / 100.0f;
+            float reward = 1.0f / 10.0f;
             AddReward(reward);
             rewards += reward;
             UpdateRewardsText();
@@ -220,19 +272,19 @@ public class MazeAgent : Agent
         {
             if (actions < (10000.0f / 10.0f))
             {
-                AddReward(1.0f);
+                AddReward(2.0f);
             }
             else if (actions < (10000.0f / 5.0f))
             {
-                AddReward(0.5f);
+                AddReward(1.0f);
             }
             else if (actions < (10000.0f / 2.0f))
             {
-                AddReward(0.25f);
+                AddReward(0.5f);
             }
 
             ScoredGoal();
-            AddReward(1.0f);
+            AddReward(2.0f);
             Done();
         }
     }

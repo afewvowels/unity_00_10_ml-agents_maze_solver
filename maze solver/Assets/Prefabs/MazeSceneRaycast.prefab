@@ -766,6 +766,7 @@ MonoBehaviour:
   guide: {fileID: 5393428268973711879, guid: bd50c0d7153b4084e923114880299fd8, type: 3}
   sceneRoot: {fileID: 8629524503715799347}
   mazeObject: {fileID: 0}
+  mazeWalls: {fileID: 0}
   instantiatedContainer: {fileID: 6800105648281111706}
   uiCanvas: {fileID: 1460614467930218240}
   displayText: {fileID: 0}
@@ -776,6 +777,7 @@ MonoBehaviour:
   instantiatedObstacles: []
   instantiatedGuides: []
   flag: 1
+  guideChance: 0
   offset: {x: 0, y: 0, z: 0}
 --- !u!1 &8688362285208357037
 GameObject:
@@ -840,6 +842,11 @@ PrefabInstance:
       propertyPath: goalsText
       value: 
       objectReference: {fileID: 1330925138743570359}
+    - target: {fileID: 1545873500208080930, guid: e2e98dc5527c9df4eb0f924740cff941,
+        type: 3}
+      propertyPath: collisionsText
+      value: 
+      objectReference: {fileID: 7871879768714462315}
     - target: {fileID: 1648027259506847791, guid: e2e98dc5527c9df4eb0f924740cff941,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -898,7 +905,7 @@ PrefabInstance:
     - target: {fileID: 2343457127928300092, guid: e2e98dc5527c9df4eb0f924740cff941,
         type: 3}
       propertyPath: m_Name
-      value: eraycastazeraycast
+      value: cubeguymazeraycast
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2e98dc5527c9df4eb0f924740cff941, type: 3}

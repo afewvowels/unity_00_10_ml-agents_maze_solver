@@ -875,13 +875,13 @@ MonoBehaviour:
     width: 1024
     height: 1024
     qualityLevel: 0
-    timeScale: 30
+    timeScale: 50
     targetFrameRate: 15
   m_InferenceConfiguration:
     width: 1024
     height: 1024
     qualityLevel: 0
-    timeScale: 30
+    timeScale: 50
     targetFrameRate: 15
   resetParameters:
     m_ResetParameters:
@@ -893,6 +893,8 @@ MonoBehaviour:
       value: 0
     - key: obstacles
       value: 0
+    - key: guidechance
+      value: 1
 --- !u!4 &610607165
 Transform:
   m_ObjectHideFlags: 0

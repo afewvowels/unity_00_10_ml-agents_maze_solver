@@ -45,6 +45,7 @@ public class MazeGenerator : MonoBehaviour
     private MazeMeshGenerator mazeMeshGenerator;
     public bool flag = true;
     public static bool isOrthographic = true;
+    public float guideChance;
 
     public Vector3 offset;
 
@@ -273,6 +274,7 @@ public class MazeGenerator : MonoBehaviour
         end = (GameObject)Instantiate(end);
         end.transform.SetParent(sceneRoot.transform, false);
         end.transform.position = newPosition;
+        mazeAgent.GetComponent<MazeAgent>().goalLocation = end;
 
         if (makeInterior)
         {
@@ -321,7 +323,7 @@ public class MazeGenerator : MonoBehaviour
                                 }
                             }
                         }
-                        else
+                        else if (UnityEngine.Random.value < guideChance)
                         {
                             GameObject graphic = (GameObject)Instantiate(guide);
                             Vector3 positionToPlace = new Vector3(j * multiplier, 0.0f, i * multiplier) + offset;
@@ -337,8 +339,6 @@ public class MazeGenerator : MonoBehaviour
                                 Destroy(graphic);
                             }
                         }
-
-                    // previousTuple = tuple;
                     }
                 }
             }
@@ -411,12 +411,12 @@ public class MazeGenerator : MonoBehaviour
 
     private void ChooseStartAndEnd(int rows, int cols)
     {
-        int startRandomIndex = UnityEngine.Random.Range(0, 3);
-        int endRandomIndex = UnityEngine.Random.Range(0, 3);
+        int startRandomIndex = UnityEngine.Random.Range(0, 4);
+        int endRandomIndex = UnityEngine.Random.Range(0, 4);
 
         while (startRandomIndex == endRandomIndex)
         {
-            endRandomIndex = UnityEngine.Random.Range(0, 3);
+            endRandomIndex = UnityEngine.Random.Range(0, 4);
         }
 
         //start.transform.position = corners[startRandomIndex].transform.position;

@@ -19,6 +19,8 @@ public class CameraController : MonoBehaviour
             scenes.Add(scene);
         }
         GetActiveAgent();
+        GetMazeOrigin();
+        SetCameraBounds();
     }
 
     // Update is called once per frame

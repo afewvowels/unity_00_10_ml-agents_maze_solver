@@ -39,15 +39,16 @@ default:
 #             encoding_size: 256
 
 CubeGuyMazeRaycast:
-    batch_size: 512
-    buffer_size: 5120
+    batch_size: 1024
+    buffer_size: 10240
     time_horizon: 256
-    num_layers: 3
-    max_steps: 3.0e6
-    use_recurrent: true
+    num_layers: 2
+    max_steps: 4.0e6
+    use_recurrent: false
     learning_rate_schedule: constant
-    reward_signals:
-        curiosity:
-            strength: 0.07
-            gamma: 0.99
-            encoding_size: 256
+    # learning_rate_schedule: linear
+    # reward_signals:
+    #     curiosity:
+    #         strength: 0.001
+    #         gamma: 0.9
+    #         encoding_size: 128

@@ -39,14 +39,14 @@ default:
 #             encoding_size: 256
 
 CubeGuyMazeRaycast:
-    buffer_size: 100000
+    buffer_size: 150000
     buffer_init_steps: 2500
     init_entcoef: 0.85
     time_horizon: 256
-    max_steps: 1.0e6
+    max_steps: 4.0e6
     hidden_units: 256
-    reward_signals:
-        curiosity:
-            strength: 0.07
-            gamma: 0.99
-            encoding_size: 256
+    # reward_signals:
+    #     curiosity:
+    #         strength: 0.07
+    #         gamma: 0.99
+    #         encoding_size: 256
