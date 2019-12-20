@@ -18,7 +18,7 @@ The agent is equipped with raycast sensors and a render texture sensor. The agen
 3. Obstacles
 4. Goal
 
-I haven't had much luck training visually before so that render texture sensor is really only going to let the agent know what reward level to expect from the treasure its about to pick up. It will also let it follow the trail of pink graphics from start to end (although my pathfinding algorithm only finds a path, not the shortest path so we'll see if the agent is able to discover a quicker way to the goal in time).
+I haven't had much luck training visually before so that render texture sensor is really only going to let the agent know what reward level to expect from the treasure its about to pick up. It will also let it follow the trail of pink graphics from start to end. No Djikstra or A* here! My pathfinding algorithm only uses a stack and finds a path, not the shortest path so we'll see if the agent is able to discover a quicker way to the goal in time.
 
 ## Camera Controls
 For your viewing pleasure there are camera controls!
@@ -31,3 +31,5 @@ For your viewing pleasure there are camera controls!
 * QE - Rotate the camera (perspective)
 
 Anyway, I'm loving working with [Unity's ML-Agents toolkit](https://github.com/Unity-Technologies/ml-agents) and if you haven't seen it before, definitely check it out!
+
+[![CodeFactor](https://www.codefactor.io/repository/github/afewvowels/unity_00_10_ml-agents_maze_solver/badge)](https://www.codefactor.io/repository/github/afewvowels/unity_00_10_ml-agents_maze_solver)
