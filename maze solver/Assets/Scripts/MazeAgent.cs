@@ -26,7 +26,7 @@ public class MazeAgent : Agent
     private void Start()
     {
         collisionCount = 0;
-        maxCollisions = 250;
+        maxCollisions = 300;
         collisionsText.text = collisionCount.ToString();
         academy = FindObjectOfType<MazeAcademy>();
         agentRB = GetComponent<Rigidbody>();
@@ -69,6 +69,9 @@ public class MazeAgent : Agent
 
         switch (moveAction)
         {
+            case 0:
+                AddReward(existentialPenalty * 5.0f);
+                break;
             case 1:
                 agentRB.AddRelativeForce(movement, ForceMode.VelocityChange);
                 AddReward(-existentialPenalty);
@@ -78,7 +81,9 @@ public class MazeAgent : Agent
                 AddReward(-existentialPenalty);
                 break;
             case 3:
-                agentRB.AddRelativeForce(movement * -0.333f, ForceMode.VelocityChange);
+                // agentRB.AddRelativeForce(movement * -0.333f, ForceMode.VelocityChange);
+                AddReward(existentialPenalty);
+                agentRB.velocity = Vector3.zero;
                 break;
         }
 

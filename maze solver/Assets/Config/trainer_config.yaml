@@ -42,13 +42,13 @@ CubeGuyMazeRaycast:
     batch_size: 1024
     buffer_size: 10240
     time_horizon: 256
-    num_layers: 2
+    num_layers: 3
     max_steps: 4.0e6
-    use_recurrent: false
+    use_recurrent: true
     learning_rate_schedule: constant
     # learning_rate_schedule: linear
     # reward_signals:
     #     curiosity:
-    #         strength: 0.001
+    #         strength: 0.03
     #         gamma: 0.9
     #         encoding_size: 128
